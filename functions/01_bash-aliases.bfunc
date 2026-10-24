@@ -1,5 +1,12 @@
-# Last Updated: Sat Nov 15,2025
+# Last Updated: Fri, Oct 23, 2026
 #
+####################################################################################################
+# FUNCTION CONFIGURATION #                                                                         #
+####################################################################################################
+
+IS_ENABLED="1" # Can be: 1/0, Yes/No, YES/NO, True/False, or TRUE/FALSE
+
+
 function BLINGLoader_Aliases() {
 ## BEGIN Custom Aliases - Base ##
 	alias ll="ls -hl --color=auto"
