@@ -47,13 +47,13 @@ load_file() {
     # 1. Check if an argument was provided
     if [ -z "$1" ]; then
         printf "${RED}[ NOT OK ]${NC} No file specified.\n"
-        exit 1
+        return 1
     fi
 
     # 2. Check if the file physically exists
     if [ ! -f "$1" ]; then
         printf "${RED}[ NOT OK ]${NC} File does not exist: $1\n"
-        exit 1
+        return 1
     fi
 
     # 3. Try to load the file and capture any system errors
@@ -64,7 +64,7 @@ load_file() {
         printf "${GREEN}[ OK ]${NC}\n"
     else
         printf "${RED}[ NOT OK ]${NC} System error: %s\n" "$ERR_MSG"
-        exit 1
+        return 1
     fi
 }
 
@@ -99,7 +99,7 @@ function flu() {
 	}	
 
 	# Source custom date config manually if FLU fails
-		# LoadCustomDate
+		 LoadCustomDate
 
 # Load custom alias configuration
 	CustomAliasFile="CustomAliases.sh"
@@ -111,7 +111,7 @@ function flu() {
 	}
 
 	# Source custom aliases manually if FLU fails
-		# LoadCustomAliases
+		 LoadCustomAliases
 
 # Load custom prompt configuration
 	CustomPS1File="NewModernPS1-v2.sh"
@@ -123,14 +123,19 @@ function flu() {
 	}
 
 	# Source custom prompt manually if FLU fails
-		# LoadCustomPS1
+		 LoadCustomPS1
 
 #################################################################
 # Call FLU #													#
 #################################################################
-	flu $CustomDateFile
-	flu $CustomAliasFile
-	flu $CustomPromptFile
+	function FluShot() {
+		flu $CustomDateFile
+		flu $CustomAliasFile
+		flu $CustomPromptFile
+}
+
+	# Run FluShot
+		# FluShot
 
 #################################################################
 # Load BRCD #													#
