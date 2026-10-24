@@ -15,19 +15,22 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
- 
-alias rm='rm -iv'
-alias cp='cp -iv'
-alias mv='mv -iv'
+function DepricatedAliases() {
+	# User specific aliases and functions
+		alias rm='rm -iv'
+		alias cp='cp -iv'
+		alias mv='mv -iv'
 
-# New Alias 06-2026 #
-alias ll='ls -hl --color=auto'
+	# New Alias 06-2026 #
+		alias ll='ls -hl --color=auto'
 
+}
 
+# Load Depricated Aliases As Needed
+	# DepricatedAliases
 
 # Load custom alias configuration
-	CustomAliasFile="CustomAlias.sh"
+	CustomAliasFile="CustomAliases.sh"
 
 	if [ -f "$HOME/$CustomAliasFile" ]; then
     	. "$HOME/$CustomAliasFile"
