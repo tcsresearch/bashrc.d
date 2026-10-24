@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 # BLING PreLoader Utility
-PreLoader_Version="26.10"
+PreLoader_Version="26.10.1"
+
+# CHANGELOG - 26.10.1
+#	- Added Functions: DisplayBanner, NewLineCinema
+#	- [BUGFIX] Changed $CONFIG_FILE to BRCD-Loader.conf
+
+# CHANGELOG - 26.10
 #	- Fixed output bug on Line 66: ${reset} was missing.
 #	- Moved to Colors2.conf
 #	- Colorized folder not found messasge on Line 73
@@ -39,7 +45,7 @@ fi
 CONFIG_DIR="$(pwd)/config"
 # CONFIG_FILE="test.ini"
 #  CONFIG_FILE="config.ini"
-  CONFIG_FILE="SEOPanel-UpgradeTool.conf"
+  CONFIG_FILE="BRCD-Loader.conf"
 
 FUNC_DIR="$(pwd)/functions"
   FUNC_FILE="lib_ini.bfunc"
@@ -58,10 +64,12 @@ PRELOAD_PROFILES="FALSE"
 # Display Functions #																											   #
 ####################################################################################################################################
 
-echo " "
-echo "BLING PreLoader Utility - Version $PreLoader_Version"
-echo "-----------------------------------------------------"
-echo " "
+function DisplayBanner() {
+	echo " "
+	echo "BLING PreLoader Utility - Version $PreLoader_Version"
+	echo "-----------------------------------------------------"
+	echo " "
+}
 
 function DisplayLine() {
 	echo " ${brightblue}__________________________________________________${reset}"
@@ -69,6 +77,12 @@ function DisplayLine() {
 
 function NewLine() {
 	echo " "
+}
+
+function NewLineCinema() {
+	NewLine
+	DisplayLine
+	NewLine
 }
 
 ####################################################################################################################################
@@ -166,6 +180,8 @@ NewLine
 
 # Sanity Checker: Colors File
 # SanityChecker
+
+DisplayBanner
 
 # Only Run PreLoaders When Set To TRUE under Runtime Configuration.
 	# Check and run PreLoad_Configs if Enabled
