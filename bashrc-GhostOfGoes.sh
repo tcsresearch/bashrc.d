@@ -1,6 +1,8 @@
 #!/bin/env bash
 ### Taken From: https://gist.github.com/GhostofGoes/db5df3dcc8b8e1b58c04268c15592496
 
+### As of Fri, Oct 23,2026, code has been copied into functions/02_bash-aliases2-GhostOfGoes.bfunc.
+
 # Set colored terminal prompt as "hostname:current directory$ "
 # Not sure if this works on centos yet
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
