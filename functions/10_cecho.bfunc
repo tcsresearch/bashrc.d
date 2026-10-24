@@ -1,6 +1,13 @@
-#!/bin/bash
+#!/bin/env bash
+
+####################################################################################################
+# FUNCTION CONFIGURATION #                                                                         #
+####################################################################################################
+
 # Define Location of Cecho
 Location_Cecho="/etc/BLING/Cecho.bfunc"
+
+
 
 # Load function if it exists
 # TODO: Show error if not found.
