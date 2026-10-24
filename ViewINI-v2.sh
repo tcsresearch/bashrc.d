@@ -23,7 +23,7 @@ FUNC_FILE="lib_ini.bfunc"
 
 # Colors for Cecho-like output
 # Cannot find this file!  Falling back to the DefineColors function.
-COLORS_FILE="Colors.conf"
+COLORS_FILE="Colors2.conf"
 
 # Define ShowINI Variables #
 ShowINI_Left="${brightyellow} $key ${brightred}"
