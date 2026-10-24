@@ -15,6 +15,11 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+
+#################################################################
+# [ DEPRICATED ] Aliases #										#
+#################################################################
+
 function DepricatedAliases() {
 	# User specific aliases and functions
 		alias rm='rm -iv'
@@ -29,32 +34,89 @@ function DepricatedAliases() {
 # Load Depricated Aliases As Needed
 	# DepricatedAliases
 
-# Load custom alias configuration
-	CustomAliasFile="CustomAliases.sh"
+#################################################################
+# File Loader Utility (FLU) #									#
+#################################################################
 
-	if [ -f "$HOME/$CustomAliasFile" ]; then
-    	. "$HOME/$CustomAliasFile"
-	fi
+load_file() {
+    # Define color codes
+    local GREEN='\033[0;32m'
+    local RED='\033[0;31m'
+    local NC='\033[0m' # No Color
 
+    # Check if a file argument was provided and if the file exists
+    if [ -n "$1" ] && [ -f "$1" ]; then
+        source "$1"
+        printf "${GREEN}[ OK ]${NC}\n"
+    else
+        printf "${RED}[ NOT OK ]${NC}\n"
+        return 1
+    fi
+}
+
+function FileLoaderUtility() {
+  load_file
+}
+
+function flu() {
+  load_file
+}
+
+
+# Call Our Function
+  # load_file
+
+
+#################################################################
+# Custom Files #												#
+#################################################################
 
 # Load custom date configuration
 	CustomDateFile="CustomDate.sh"
 
-	if [ -f "$HOME/$CustomDateFile" ]; then
-    	. "$HOME/$CustomDateFile"
-	fi
+	function LoadCustomDate() {
+		if [ -f "$HOME/$CustomDateFile" ]; then
+    		. "$HOME/$CustomDateFile"
+		fi
+	}	
 
+	# Source custom date config manually if FLU fails
+		# LoadCustomDate
 
+# Load custom alias configuration
+	CustomAliasFile="CustomAliases.sh"
+
+	function LoadCustomAliases() {
+		if [ -f "$HOME/$CustomAliasFile" ]; then
+    		. "$HOME/$CustomAliasFile"
+		fi
+	}
+
+	# Source custom aliases manually if FLU fails
+		# LoadCustomAliases
 
 # Load custom prompt configuration
 	CustomPS1File="NewModernPS1-v2.sh"
 
-	if [ -f "$HOME/$CustomPS1File" ]; then
-    	. "$HOME/$CustomPS1File"
-	fi
+	function LoadCustomPS1() {
+		if [ -f "$HOME/$CustomPS1File" ]; then
+    		. "$HOME/$CustomPS1File"
+		fi
+	}
 
+	# Source custom prompt manually if FLU fails
+		# LoadCustomPS1
 
+#################################################################
+# Call FLU #													#
+#################################################################
+	flu $CustomDateFile
+	flu $CustomAliasFile
+	flu $CustomPromptFile
 
+#################################################################
+# Load BRCD #													#
+#################################################################
 
 ### Load BRCD ###
 	function Load_BRCD() {
@@ -77,7 +139,12 @@ function DepricatedAliases() {
 	}
 
 # Call Load_BRCD()
-	Load_BRCD()
+	# Load_BRCD()
+
+
+#################################################################
+# Add Apps To Path #											#
+#################################################################
 
 ### Add BLING to path ###
 	export PATH="$PATH:/etc/BLING"
@@ -87,10 +154,12 @@ function DepricatedAliases() {
 	export PATH="$PATH:/root/.cargo/bin"
 	echo "Cargo Added To PATH."
 
-### Basher ###
+### Add Basher to path / Init Basher ###
 	export PATH="$HOME/.basher/bin:$PATH"   ##basher5ea843
 	eval "$(basher init - bash)"             ##basher5ea843
 	echo "Added Basher to PATH."
+
+
 
 ### Blank Line ###
 	echo " "
