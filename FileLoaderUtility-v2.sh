@@ -10,13 +10,13 @@ load_file() {
     # 1. Check if an argument was provided
     if [ -z "$1" ]; then
         printf "${RED}[ NOT OK ]${NC} No file specified.\n"
-        exit 1
+        return 1
     fi
 
     # 2. Check if the file physically exists
     if [ ! -f "$1" ]; then
         printf "${RED}[ NOT OK ]${NC} File does not exist: $1\n"
-        exit 1
+        return 1
     fi
 
     # 3. Try to load the file and capture any system errors
@@ -27,7 +27,7 @@ load_file() {
         printf "${GREEN}[ OK ]${NC}\n"
     else
         printf "${RED}[ NOT OK ]${NC} System error: %s\n" "$ERR_MSG"
-        exit 1
+        return 1
     fi
 }
 
@@ -41,4 +41,4 @@ function flu() {
 
 
 # Call Our Function
-  load_file
+ #  load_file
