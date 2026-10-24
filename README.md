@@ -1,4 +1,4 @@
-# BRCD
+# bashrc.d (Formerly BRCD)
  Bash rc.d Custom Scripts
 <hr>
 
