@@ -5,7 +5,7 @@
 # Add Apps To Path #											#
 #################################################################
 
-ExportStyle="MultiLine" # Can be Normal, MultiLine, or SingleLine
+ExportStyle="SingleLine" # Can be Normal, MultiLine, or SingleLine
 
 # Normal w/o Colors
 function Normal() {
@@ -61,10 +61,10 @@ function SingleLine() {
 	### Add Basher to path / Init Basher ###
 		export PATH="$HOME/.basher/bin:$PATH"	##basher5ea843
 		eval "$(basher init - bash)"			##basher5ea843
-		# echo -e " [ \e[32mBasher\e[0m ]"
 		echo -n -e " [ \e[32mBasher\e[0m ]"
-		# Note: The final echo drops the "-n" to cleanly reset the terminal line at the end
-    ### Terminal reset
+    
+	### Terminal reset: ###
+	# The final echo drops the "-n" to cleanly reset the terminal line at the end.
 		echo -e " "
 }
 
