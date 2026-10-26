@@ -29,9 +29,9 @@ load_file() {
     ERR_MSG=$(source "$1" 2>&1)
 
     if [ $? -eq 0 ]; then
-        printf "${GREEN}[ OK ]${NC}\n"
+        printf "$1: ${GREEN}[ OK ]${NC}\n"
     else
-        printf "${RED}[ NOT OK ]${NC} System error: %s\n" "$ERR_MSG"
+        printf "$1: ${RED}[ NOT OK ]${NC} System error: %s\n" "$ERR_MSG"
         return 1
     fi
 }
