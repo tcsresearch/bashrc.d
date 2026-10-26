@@ -157,7 +157,7 @@ function flu() {
 	function FluShot() {
 		flu $CustomDateFile
 		flu $CustomAliasFile
-		flu $CustomPromptFile
+		flu $CustomPS1File
 		flu $PathExportFile
 		flu $BRCDFile
 }
