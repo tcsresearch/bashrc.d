@@ -1,9 +1,14 @@
+#!/bin/env bash
+# shellcheck source=/dev/null
+
 #################################################################
 # Add Apps To Path #											#
 #################################################################
 
+ExportStyle="MultiLine" # Can be Normal, MultiLine, or SingleLine
+
 # Normal w/o Colors
-function PathExport() {
+function Normal() {
 	### Add BLING to path ###
 		export PATH="$PATH:/etc/BLING"
 		echo "BLING Added To PATH."
@@ -18,12 +23,9 @@ function PathExport() {
 		echo "Added Basher to PATH."
 }
 
-# Run PathExport
-	# PathExport
-
 
 # With Colors: MultiLine
-function NewPath_Export_1() {
+function MultiLine() {
 	### Print Initialization Header ###
 		echo "Adding Apps To Path:"
 
@@ -41,12 +43,10 @@ function NewPath_Export_1() {
 		echo -e " [ \e[32mBasher\e[0m ]"
 }
 
-# Run NewPath_Export_1
-# NewPath_Export_1
 
 
 # With Colors: Single Line
-function NewPath_Export_2() {
+function SingleLine() {
 	### Start the checklist on a single line ###
 		echo -n "Adding Apps To Path:"
 
@@ -61,13 +61,24 @@ function NewPath_Export_2() {
 	### Add Basher to path / Init Basher ###
 		export PATH="$HOME/.basher/bin:$PATH"	##basher5ea843
 		eval "$(basher init - bash)"			##basher5ea843
-		echo -e " [ \e[32mBasher\e[0m ]" 
+		# echo -e " [ \e[32mBasher\e[0m ]"
+		echo -n -e " [ \e[32mBasher\e[0m ]"
 		# Note: The final echo drops the "-n" to cleanly reset the terminal line at the end
+    ### Terminal reset
+		echo -e " "
 }
 
-# Run NewPath_Export_2
-	NewPath_Export_2
 
+##########################################
+# Main Program #						 #
+##########################################
+
+# Confirm variable is set to a valid function first.
+if [ "$(type -t "$ExportStyle")" = "function" ]; then
+    "$ExportStyle"
+else
+    echo "ERROR: $ExportStyle is not a valid function."
+fi
 
 
 
