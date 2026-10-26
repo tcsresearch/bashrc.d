@@ -17,25 +17,7 @@ export PATH
 
 
 #################################################################
-# [ DEPRICATED ] Aliases #										#
-#################################################################
-
-function DepricatedAliases() {
-	# User specific aliases and functions
-		alias rm='rm -iv'
-		alias cp='cp -iv'
-		alias mv='mv -iv'
-
-	# New Alias 06-2026 #
-		alias ll='ls -hl --color=auto'
-
-}
-
-# Load Depricated Aliases As Needed
-	# DepricatedAliases
-
-#################################################################
-# File Loader Utility (FLU) v2 #									#
+# File Loader Utility (FLU) v2 #								#
 #################################################################
 
 load_file() {
@@ -82,11 +64,33 @@ function flu() {
 
 
 #################################################################
-# Custom Files #												#
+# Define Custom Files #											#
 #################################################################
 
 # Load custom date configuration
 	CustomDateFile="CustomDate.sh"
+
+
+# Load custom alias configuration
+	CustomAliasFile="CustomAliases.sh"
+
+
+# Load custom prompt configuration
+	CustomPS1File="NewModernPS1-v2.sh"
+
+	
+# Load path exports
+	PathExportFile="PathExport.sh"
+
+
+# Load path exports
+	BRCDFile="Load-BRCD.sh"
+
+
+#################################################################
+# Custom File Loader Functions #								#
+#################################################################
+# This section will be superceded by FLU.
 
 	function LoadCustomDate() {
 		if [ -f "$HOME/$CustomDateFile" ]; then
@@ -94,44 +98,54 @@ function flu() {
 		fi
 	}	
 
-	# Source custom date config manually if FLU fails
-		 LoadCustomDate
-
-# Load custom alias configuration
-	CustomAliasFile="CustomAliases.sh"
-
+	
 	function LoadCustomAliases() {
 		if [ -f "$HOME/$CustomAliasFile" ]; then
     		. "$HOME/$CustomAliasFile"
 		fi
 	}
 
-	# Source custom aliases manually if FLU fails
-		 LoadCustomAliases
-
-# Load custom prompt configuration
-	CustomPS1File="NewModernPS1-v2.sh"
-
+	
 	function LoadCustomPS1() {
 		if [ -f "$HOME/$CustomPS1File" ]; then
     		. "$HOME/$CustomPS1File"
 		fi
 	}
 
-	# Source custom prompt manually if FLU fails
-		 LoadCustomPS1
-
-# Load path exports
-	PathExportFile="PathExport.sh"
-
+	
 	function LoadPathExports() {
 		if [ -f "$HOME/$PathExportFile" ]; then
     		. "$HOME/$PathExportFile"
 		fi
 	}
 
+	
+	function LoadBRCD() {
+		if [ -f "$HOME/$BRCDFile" ]; then
+    		. "$HOME/$BRCDFile"
+		fi
+	}
+
+	
+#################################################################
+# Call Custom File Loader Functions #							#
+#################################################################
+# This section will be superceded by FLU.
+	
+	# Source custom date config manually if FLU fails
+		 LoadCustomDate
+
+	# Source custom aliases manually if FLU fails
+		 LoadCustomAliases
+
+	# Source custom prompt manually if FLU fails
+		 LoadCustomPS1
+
 	# Source custom prompt manually if FLU fails
 		 PathExportFile
+
+	# Source custom prompt manually if FLU fails
+		 BRCDFile
 
 
 #################################################################
@@ -142,37 +156,12 @@ function flu() {
 		flu $CustomAliasFile
 		flu $CustomPromptFile
 		flu $PathExportFile
+		flu $BRCDFile
 }
 
 	# Run FluShot
 		# FluShot
 
-#################################################################
-# Load BRCD #													#
-#################################################################
-
-### Load BRCD ###
-	function Load_BRCD() {
-		BRCD_Folder="/etc/BRCD"
-		echo "Loading BRCD..."
-		if [ ! -d $BRCD_Folder ]; then
-			echo "ERROR: $BRCD_Folder not found!"
-			touch /root/BRCD_NOT_FOUND
-		else
-			cd "$BRCD_Folder" || return 1
-			echo "BRCD Present Working Directory: $(pwd)"
-			# cd etc/bashrc.d
-			# sh _00-BRCD-Loader5.sh
-			echo "Running AdvPreLoader..."
-	  		sh AdvPreLoader_ShChk.sh
-			# AdvPreLoader_ShChk will take care of this
-	  		sh _00-BRCD-Loader6_ShChk.sh # Testing as of May 31, 2026
-			cd ~ || return 2
-		fi
-	}
-
-# Call Load_BRCD()
-	# Load_BRCD()
 
 
 ### Blank Line ###
