@@ -83,7 +83,7 @@ function flu() {
 	PathExportFile="PathExport.sh"
 
 
-# Load path exports
+# Load BRCD
 	BRCDFile="Load-BRCD.sh"
 
 
@@ -145,7 +145,7 @@ function flu() {
 		 LoadPathExports
 
 	# Source custom prompt manually if FLU fails
-		 BRCDFile
+		 LoadBRCD
 
 
 #################################################################
