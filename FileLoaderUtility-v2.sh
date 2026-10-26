@@ -1,5 +1,10 @@
 #!/bin/env bash
-# File Loader Utility (FLU).
+
+# shellcheck source=/dev/null
+
+#################################################################
+# File Loader Utility (FLU) v2 #								#
+#################################################################
 
 load_file() {
     # Define color codes
@@ -32,13 +37,14 @@ load_file() {
 }
 
 function FileLoaderUtility() {
-  load_file
+  load_file "$@"
 }
 
 function flu() {
-  load_file
+  load_file "$@"
 }
 
 
 # Call Our Function
- #  load_file
+ # load_file "$@"
+
