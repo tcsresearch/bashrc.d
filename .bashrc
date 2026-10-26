@@ -142,7 +142,7 @@ function flu() {
 		 LoadCustomPS1
 
 	# Source custom prompt manually if FLU fails
-		 PathExportFile
+		 LoadPathExports
 
 	# Source custom prompt manually if FLU fails
 		 BRCDFile
