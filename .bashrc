@@ -1,4 +1,7 @@
+#!/bin/env bash
 # .bashrc
+
+# shellcheck source=/dev/null
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -51,16 +54,16 @@ load_file() {
 }
 
 function FileLoaderUtility() {
-  load_file
+  load_file "$@"
 }
 
 function flu() {
-  load_file
+  load_file "$@"
 }
 
 
 # Call Our Function
- # load_file
+ # load_file "$@"
 
 
 #################################################################
