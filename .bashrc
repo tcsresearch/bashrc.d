@@ -125,6 +125,19 @@ function flu() {
 	# Source custom prompt manually if FLU fails
 		 LoadCustomPS1
 
+# Load path exports
+	PathExportFile="PathExport.sh"
+
+	function LoadPathExports() {
+		if [ -f "$HOME/$PathExportFile" ]; then
+    		. "$HOME/$PathExportFile"
+		fi
+	}
+
+	# Source custom prompt manually if FLU fails
+		 PathExportFile
+
+
 #################################################################
 # Call FLU #													#
 #################################################################
