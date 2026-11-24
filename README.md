@@ -4,7 +4,8 @@
 
 This is the latest major code revision, with the code split into functions and is PreLoader enabled.
 <br>
-As of Jan 11, 2026, this code has been tested on Fedora and appears to be working properly (via _00-BRCD-Loader5.sh).
+As of Jan 11, 2026, this code has been tested on Fedora and appears to be working properly 
+ <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (via _00-BRCD-Loader5.sh).
 
 <hr>
 <p>
